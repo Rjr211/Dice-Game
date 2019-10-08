@@ -8,3 +8,6 @@ activePlayer = 0;
 
 dice = Math.floor(Math.random() * 6) + 1;
 
+document.querySelector('#current-' + activePlayer).textContent = dice;
+
+document.querySelector('.dive').style.display = 'none';
