@@ -40,8 +40,18 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
     //update the UI
     document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
 
-    //next 
-    nextPlayer();
+    //check if player won the game
+    if (scores[activePlayer] >= 20) {
+        document.querySelector('#name-' + activePlayer).innerHTML = "<b>" + 'Winner!!' + "</b>"
+        document.querySelector('.dice').style.display = 'none';
+        document.querySelector('.player-' +activePlayer + '-panel').classLista.add('winner');
+        document.querySelector('.player-' +activePlayer + '-panel').classLista.remove('active');
+    } else {
+        //next 
+        nextPlayer();
+    }
+
+    
 });
 
 
