@@ -59,4 +59,4 @@ function nextPlayer() {
 };
 
 //Toggle between player and dice
-//document.querySelector('#current-' + activePlayer).textContent = dice;
+//document.querySelector('#current-' + activePlayer).textContent = dice
