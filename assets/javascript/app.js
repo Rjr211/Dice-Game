@@ -9,12 +9,14 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
 
     if(gamePlaying) {
     //random number
-    var dice = Math.floor(Math.random() * 6) + 1;
+    var dice1 = Math.floor(Math.random() * 6) + 1;
+    var dice2 = Math.floor(Math.random() * 6) + 1;
 
     //display the result
-    var diceDOM =  document.querySelector('.dice');
-    diceDOM.style.display = 'block';
-    diceDOM.src = 'assets/images/' + 'dice-' + dice + '.png'
+    document.getElementById('dice-1').style.display = 'block';
+    document.getElementById('dice-2').style.display = 'block';
+    document.getElementById('dice-1').src = 'assets/images/' + 'dice-' + dice + '.png'
+    document.getElementById('dice-2').src = 'assets/images/' + 'dice-' + dice + '.png'
 
     //update round score IF the rolled number was not a 1
         if (dice === 6 && lastDice === 6) {
