@@ -15,10 +15,21 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
     //display the result
     document.getElementById('dice-1').style.display = 'block';
     document.getElementById('dice-2').style.display = 'block';
-    document.getElementById('dice-1').src = 'assets/images/' + 'dice-' + dice + '.png'
-    document.getElementById('dice-2').src = 'assets/images/' + 'dice-' + dice + '.png'
+    document.getElementById('dice-1').src = 'assets/images/' + 'dice-' + dice1 + '.png'
+    document.getElementById('dice-2').src = 'assets/images/' + 'dice-' + dice2 + '.png'
 
     //update round score IF the rolled number was not a 1
+    if (dice1 !== 1 && dice2 !== 1) {
+        //Add score
+        roundScore += dice1 + dice2;
+        
+
+        document.querySelector('#current-' + activePlayer).textContent = roundScore;
+    } else {
+        //Next player
+        nextPlayer();
+    }
+    /*
         if (dice === 6 && lastDice === 6) {
             //Player looses score if roll 6 two times in a row
             scores[activePlayer] = 0;
@@ -34,7 +45,7 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
     }
 
      lastDice = dice;
-
+    */
    }
 
 });
@@ -62,7 +73,8 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
       //check if player won the game
       if (scores[activePlayer] >= winningScore) {
           document.querySelector('#name-' + activePlayer).textContent = "Winner!!"
-          document.querySelector('.dice').style.display = 'none';
+          document.getElementById('dice-1').style.display = 'none';
+          document.getElementById('dice-2').style.display = 'none';
           document.querySelector('.player-' + activePlayer + '-panel').classList.add('winner');
           document.querySelector('.player-' + activePlayer + '-panel').classList.remove('active');
           gamePlaying = false;
@@ -87,7 +99,8 @@ function nextPlayer() {
         document.querySelector('.player-0-panel').classList.toggle('active');
         document.querySelector('.player-1-panel').classList.toggle('active'); 
 
-        document.querySelector('.dice').style.display = 'none';
+        document.getElementById('dice-1').style.display = 'none';
+        document.getElementById('dice-2').style.display = 'none';
 }
 
 //reset game
@@ -100,7 +113,8 @@ function init() {
     gamePlaying = true;
 
     //Hide dice on game load
-    document.querySelector('.dice').style.display = 'none';
+    document.getElementById('dice-1').style.display = 'none';
+    document.getElementById('dice-2').style.display = 'none';
 
     //set defaults to 0
     document.getElementById('score-0').textContent = '0';
